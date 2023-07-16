@@ -1,10 +1,30 @@
 version: '3.9'
 services:
-  # Consul run in client mode 
+  # HashiCorp Consul in Dev mode 
   consul:
     image: consul:1.15
     container_name: consul
-    hostname: consul
+    command: agent -dev -client 0.0.0.0
     ports:
       - 8500:8500
-    command: agent -dev -client=
+      - 8600:8600
+    network_mode: host
+    restart: unless-stopped
+
+  # Web Service from /web folder
+  web:
+    build: ./web
+    # Map port 3000 to a dynamic port
+    ports:
+      - 3000:3000
+    networks:
+      - consul-network
+    restart: unless-stopped
+    depends_on:
+      - consul
+    environment:
+      - PORT=3000
+    
+networks:
+  consul-network:
+    driver: bridge

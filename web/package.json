@@ -1,0 +1,14 @@
+{
+  "name": "web",
+  "version": "1.0.0",
+  "description": "mock web service ",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "author": "Ahmed R Awadallah",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
