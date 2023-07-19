@@ -11,12 +11,12 @@ curl \
         "web",
         "docker"
       ],
-      "Address": "192.168.80.2",
+      "Address": "127.0.0.1",
       "Port": 3000,
       "EnableTagOverride": false,
       "Check": {
         "DeregisterCriticalServiceAfter": "90m",
-        "HTTP": "http://192.168.80.2:3000/",
+        "HTTP": "http://127.0.0.1:3000/health",
         "Interval": "10s"
       }
     }' \
